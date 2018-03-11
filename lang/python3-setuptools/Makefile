@@ -29,7 +29,7 @@ define Package/python3-setuptools
 	CATEGORY:=Languages
 	TITLE:=Tool for installing Python $(PYTHON3_VERSION) packages.
 	URL:=https://bitbucket.org/pypa/setuptools
-	DEPENDS:=+python3 +python3-dev +python3-lib2to3
+	DEPENDS:=+python3-light +python3-dev +python3-lib2to3 +python3-xml +python3-email
 	MAINTAINER:=Alexandru Ardelean <ardeleanalex@gmail.com>
 endef
 

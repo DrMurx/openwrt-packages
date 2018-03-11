@@ -8,7 +8,7 @@
 define Package/python3-dev
 $(call Package/python3/Default)
   TITLE:=Python $(PYTHON3_VERSION) development files
-  DEPENDS:=+python3 +python3-lib2to3
+  DEPENDS:=+python3-light +python3-lib2to3
 endef
 
 define Py3Package/python3-dev/install

@@ -8,7 +8,7 @@
 define Package/python3-lib2to3
 $(call Package/python3/Default)
   TITLE:=Python $(PYTHON3_VERSION) lib2to3 module
-  DEPENDS:=+python3
+  DEPENDS:=+python3-light
 endef
 
 $(eval $(call Py3BasePackage,python3-lib2to3, \

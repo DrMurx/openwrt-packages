@@ -1,16 +1,16 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=python3-xknx
-PKG_VERSION:=preview
+PKG_NAME:=XKNX
+PKG_VERSION:=0.0.1
 PKG_RELEASE:=1
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
-PKG_SOURCE_URL:=https://github.com/DrMurx/xknx.git
-PKG_SOURCE_VERSION:=$(PKG_VERSION)
+PKG_LICENSE:=MIT
 
-PKG_LICENSE=MIT
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/DrMurx/xknx.git
+PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
+PKG_SOURCE_VERSION:=preview
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_SOURCE_VERSION).tar.gz
 
 include $(INCLUDE_DIR)/package.mk
 $(call include_mk, python3-package.mk)
@@ -25,21 +25,18 @@ define Package/python3-xknx
 endef
 
 define Package/python3-xknx/description
-	Fast YAML parser.
+	XKNX library.
+endef
+
+define Build/Configure
 endef
 
 define Build/Compile
-	$(call Build/Compile/Py3Mod,,\
-		install --prefix="$(PKG_INSTALL_DIR)/usr" \
-	)
 endef
 
-define Build/InstallDev
-	$(INSTALL_DIR) $(PYTHON3_LIB_DIR)
-	$(CP) \
-		$(PKG_INSTALL_DIR)$(PYTHON3_PKG_DIR)/* \
-		$(PYTHON3_LIB_DIR)
+define Package/python3-xknx/install
+	$(INSTALL_DIR) $(1)$(PYTHON3_PKG_DIR)
+	$(CP) $(PKG_BUILD_DIR)/xknx $(1)$(PYTHON3_PKG_DIR)
 endef
 
-$(eval $(call Py3Package,python3-xknx))
 $(eval $(call BuildPackage,python3-xknx))
